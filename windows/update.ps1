@@ -8,10 +8,11 @@ function Core () {
         Write-Output "    running update for: $windowsVersion $agentVersion"
 
         $templateDir = ".\"
-        $targetDir = "..\Output\Core\$windowsVersion\azdo"
+        $targetDir = "..\Output\Core\$windowsVersion"
         $agentTag = "windows-core-$windowsVersion"
         if ( $agentVersion ) {
             $templateDir = ".\versioned"
+            $targetDir += "\azdo"
             $agentTag += "-azdo"
         }
     
