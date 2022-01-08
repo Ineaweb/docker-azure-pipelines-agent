@@ -12,13 +12,13 @@ RUN apt-get install --no-install-recommends \
       gettext \
       zlib1g \
       libicu-dev \
-      && set -x \
-      && export DOTNET_CLI_TELEMETRY_OPTOUT=1 \
-      && curl -sSL -o dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-      && chmod +x dotnet-install.sh \
-      && ./dotnet-install.sh  --channel "LTS" --version "$[DOTNET_SDK_VERSION]" --architecture "x64" --install-dir /opt/dotnet --no-path \
-      && ln -s /opt/dotnet/dotnet /usr/local/bin \
-      && dotnet help >/dev/null \
-      && apt-get clean
+RUN set -x
+RUN export DOTNET_CLI_TELEMETRY_OPTOUT=1
+RUN curl -sSL -o dotnet-install.sh https://dot.net/v1/dotnet-install.sh
+RUN chmod +x dotnet-install.sh
+RUN ./dotnet-install.sh  --channel "LTS" --version "$[DOTNET_SDK_VERSION]" --architecture "x64" --install-dir /opt/dotnet --no-path
+RUN ln -s /opt/dotnet/dotnet /usr/local/bin
+RUN dotnet help >/dev/null
+RUN apt-get clean
 
 ENV dotnet=/usr/bin/dotnet
