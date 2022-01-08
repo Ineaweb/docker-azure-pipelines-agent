@@ -6,7 +6,7 @@ LABEL name="$[DOCKER_REGISTRY]/$[DOCKER_NAME]:$[AZDO_AGENT_TAG]-dotnet-core-$[DO
 
 WORKDIR /usr
 
-RUN yum -y install \
+RUN apt-get install --no-install-recommends \
       deltarpm \
       epel-release \
       unzip \
@@ -23,6 +23,6 @@ RUN yum -y install \
       && ./dotnet-install.sh  --channel "LTS" --version "$[DOTNET_CORE_VERSION]" --architecture "x64" --install-dir /opt/dotnet --no-path \
       && ln -s /opt/dotnet/dotnet /usr/local/bin \
       && dotnet help >/dev/null \
-      && yum clean all
+      && apt-get clean
 
 ENV dotnet=/usr/bin/dotnet
