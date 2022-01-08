@@ -12,10 +12,11 @@ jobs:
     workingDirectory: '$(Build.SourcesDirectory)/windows/'
   steps:
   - task: PowerShell@2
-    targetType: filepath
-    filePath: .\build.ps1
     displayName: 'Build images'
-    workingDirectory: $(workingDirectory)    
+    inputs:
+      targetType: filepath
+      filePath: .\build.ps1
+      workingDirectory: $(workingDirectory)    
 
   - task: Docker@2
     displayName: 'Docker Login'
@@ -26,8 +27,9 @@ jobs:
       addPipelineData: false
   
   - task: PowerShell@2
-    targetType: filepath
-    filePath: .\push.ps1
+    inputs:
+      targetType: filepath
+      filePath: .\push.ps1
+      workingDirectory: $(workingDirectory)
     displayName: 'Push images'
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    workingDirectory: $(workingDirectory)
