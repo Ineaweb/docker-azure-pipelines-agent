@@ -8,11 +8,9 @@ WORKDIR /usr
 
 RUN apt-get install --no-install-recommends \
       deltarpm \
-      epel-release \
       unzip \
       libunwind-dev \
       gettext \
-      libcurl-dev \
       openssl-dev \
       zlib1g \
       libicu-dev \
