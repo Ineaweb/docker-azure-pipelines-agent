@@ -82,7 +82,7 @@ ubuntu() {
       while read -r DOTNET_LINE_VERSION; do
         DOTNET_VERSION=$(echo $DOTNET_LINE_VERSION | cut -d' ' -f1)
         DOTNET_SDK_VERSION=$(echo $DOTNET_LINE_VERSION | cut -d' ' -f2)
-        DOTNET_CORE_DIR=$TARGET_DIR/dotnet/core/$DOTNET_VERSION
+        DOTNET_CORE_DIR=$TARGET_DIR/dotnet/$DOTNET_VERSION
         mkdir -p "$DOTNET_CORE_DIR"
         
         sed \
@@ -91,8 +91,8 @@ ubuntu() {
           -e s/'$\[AZDO_AGENT_TAG\]'/"$AZDO_AGENT_TAG"/g \
           -e s/'$\[DOTNET_VERSION\]'/"$DOTNET_VERSION"/g \
           -e s/'$\[DOTNET_SDK_VERSION\]'/"$DOTNET_SDK_VERSION"/g \
-          derived/dotnet/core/dockerfile.template > "$DOTNET_CORE_DIR/dockerfile"
-      done < <(< derived/dotnet/core/versions sed '/^\s*#/d')
+          derived/dotnet/dockerfile.template > "$DOTNET_CORE_DIR/dockerfile"
+      done < <(< derived/dotnet/versions sed '/^\s*#/d')
     fi
     echo "        done."
   }
