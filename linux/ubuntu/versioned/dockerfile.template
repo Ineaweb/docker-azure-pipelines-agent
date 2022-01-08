@@ -6,7 +6,7 @@ LABEL name="$[DOCKER_REGISTRY]/$[DOCKER_NAME]:ubuntu-$[UBUNTU_VERSION]-$[AZDO_AG
 
 COPY ./runAgent.sh /azdo/
 
-RUN chmod +x /azdo/runAgent.sh \
+RUN chmod 744 /azdo/runAgent.sh \
  && set -x \
  && cd /azdo \
  && curl -s -fSL https://vstsagentpackage.azureedge.net/agent/$[AZDO_AGENT_VERSION]/vsts-agent-linux-x64-$[AZDO_AGENT_VERSION].tar.gz -o agent.tgz \
