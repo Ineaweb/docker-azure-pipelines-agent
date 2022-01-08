@@ -9,13 +9,13 @@ jobs:
   workspace:
     clean: all
   variables:
-    workingDirectory: '$(Build.SourcesDirectory)/windows/'
+    workingDirectory: '$(Build.SourcesDirectory)\windows'
   steps:
   - task: PowerShell@2
     displayName: 'Build images'
     inputs:
       targetType: filepath
-      filePath: .\build.ps1
+      filePath: $(workingDirectory)\build.ps1
       workingDirectory: $(workingDirectory)    
 
   - task: Docker@2
@@ -29,7 +29,7 @@ jobs:
   - task: PowerShell@2
     inputs:
       targetType: filepath
-      filePath: .\push.ps1
+      filePath: $(workingDirectory)\push.ps1
       workingDirectory: $(workingDirectory)
     displayName: 'Push images'
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
