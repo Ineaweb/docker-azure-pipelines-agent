@@ -1,10 +1,17 @@
 # Azure Pipelines Agent Docker Container
 
-[![Downloads from Docker Hub](https://img.shields.io/docker/pulls/czon/azdo-agent.svg)](https://hub.docker.com/r/pmorisseau/azdo-agent)
-[![Stars on Docker Hub](https://img.shields.io/docker/stars/czon/azdo-agent.svg)](https://hub.docker.com/r/pmorisseau/azdo-agent)
-[![](https://images.microbadger.com/badges/image/czon/azdo-agent.svg)](https://microbadger.com/images/pmorisseau/azdo-agent)
-[![](https://images.microbadger.com/badges/version/czon/azdo-agent.svg)](https://microbadger.com/images/pmorisseau/azdo-agent)
-[![Build Status](https://dev.azure.com/czon/Docker%20Azure%20Pipelines%20Agent/_apis/build/status/codez-one.docker-azure-pipelines-agent?branchName=master)](https://dev.azure.com/czon/Docker%20Azure%20Pipelines%20Agent/_build/latest?definitionId=2&branchName=master)
+[![Downloads from Docker Hub](https://img.shields.io/docker/pulls/pmorisseau/azdo-agent.svg)](https://hub.docker.com/r/pmorisseau/azdo-agent)
+[![Stars on Docker Hub](https://img.shields.io/docker/stars/pmorisseau/azdo-agent.svg)](https://hub.docker.com/r/pmorisseau/azdo-agent)
+[![](https://images.microbadger.com/badges/image/pmorisseau/azdo-agent.svg)](https://microbadger.com/images/pmorisseau/azdo-agent)
+[![](https://images.microbadger.com/badges/version/pmorisseau/azdo-agent.svg)](https://microbadger.com/images/pmorisseau/azdo-agent)
+
+Based on Ubuntu :
+
+[![Build Status](https://dev.azure.com/pmorisseau/AzDOEphemeralAgentBuilder/_apis/build/status/Ineaweb.docker-azure-pipelines-agent-ubuntu?branchName=master)](https://dev.azure.com/pmorisseau/AzDOEphemeralAgentBuilder/_build/latest?definitionId=78&branchName=master)
+
+Based on Windows : 
+
+[![Build Status](https://dev.azure.com/pmorisseau/AzDOEphemeralAgentBuilder/_apis/build/status/Ineaweb.docker-azure-pipelines-agent-windows?branchName=master)](https://dev.azure.com/pmorisseau/AzDOEphemeralAgentBuilder/_build/latest?definitionId=79&branchName=master)
 
 This is a Docker based project for automatically generating docker images for Azure DevOps Pipelines Agents with specified Versions. The resulting Docker images should be used as a base for project specific agents that are customized to the needs for the pipeline in your project.
 
