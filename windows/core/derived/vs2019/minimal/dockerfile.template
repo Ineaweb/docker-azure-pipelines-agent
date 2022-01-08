@@ -1,10 +1,10 @@
 # escape=`
 # Copyright (c) 2016 Microsoft Corporation
 # SPDX-License-Identifier: MIT
-FROM czon/azdo-agent:$[AGENT_TAG]
+FROM pmorisseau/azdo-agent:$[AGENT_TAG]
 
-LABEL name="czon/azdo-agent:$[AGENT_TAG]-vs2019-minimal" `
-      maintainer="CodeZ.one - Kirsten Kluge" `
+LABEL name="pmorisseau/azdo-agent:$[AGENT_TAG]-vs2019-minimal" `
+      maintainer="Pmorisseau - CodeZ.one - Kirsten Kluge" `
       version="0.1.0"
 
 # Install NuGet CLI

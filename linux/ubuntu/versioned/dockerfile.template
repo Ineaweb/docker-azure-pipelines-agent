@@ -1,7 +1,7 @@
 FROM $[DOCKER_REGISTRY]/$[DOCKER_NAME]:ubuntu-$[UBUNTU_VERSION]
 
 LABEL name="$[DOCKER_REGISTRY]/$[DOCKER_NAME]:ubuntu-$[UBUNTU_VERSION]-$[AZDO_AGENT_VERSION]" \
-      maintainer="CodeZ.one - Kirsten Kluge" \
+      maintainer="Pmorisseau - CodeZ.one - Kirsten Kluge" \
       version="0.1.0"
 
 COPY ./runAgent.sh /azdo/

@@ -1,8 +1,8 @@
 # escape=`
-FROM czon/azdo-agent:windows-core-$[WINDOWS_VERSION]
+FROM pmorisseau/azdo-agent:windows-core-$[WINDOWS_VERSION]
 
-LABEL name="czon/azdo-agent:windows-core-$[WINDOWS_VERSION]-$[AGENT_VERSION]" `
-      maintainer="CodeZ.one - Kirsten Kluge" `
+LABEL name="Pmorisseau/azdo-agent:windows-core-$[WINDOWS_VERSION]-$[AGENT_VERSION]" `
+      maintainer="Pmorisseau - CodeZ.one - Kirsten Kluge" `
       version="0.0.1"
 
 WORKDIR C:\TFS

@@ -8,7 +8,7 @@ die() {
 # Initialize all the option variables.
 # This ensures we are not contaminated by variables from the environment.
 cleanup=
-registry=czon
+registry=pmorisseau
 name=azdo-agent
 count=0
 start=$(date +%s)

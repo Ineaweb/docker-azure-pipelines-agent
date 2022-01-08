@@ -1,9 +1,9 @@
 # Azure Pipelines Agent Docker Container
 
-[![Downloads from Docker Hub](https://img.shields.io/docker/pulls/czon/azdo-agent.svg)](https://hub.docker.com/r/czon/azdo-agent)
-[![Stars on Docker Hub](https://img.shields.io/docker/stars/czon/azdo-agent.svg)](https://hub.docker.com/r/czon/azdo-agent)
-[![](https://images.microbadger.com/badges/image/czon/azdo-agent.svg)](https://microbadger.com/images/czon/azdo-agent)
-[![](https://images.microbadger.com/badges/version/czon/azdo-agent.svg)](https://microbadger.com/images/czon/azdo-agent)
+[![Downloads from Docker Hub](https://img.shields.io/docker/pulls/czon/azdo-agent.svg)](https://hub.docker.com/r/pmorisseau/azdo-agent)
+[![Stars on Docker Hub](https://img.shields.io/docker/stars/czon/azdo-agent.svg)](https://hub.docker.com/r/pmorisseau/azdo-agent)
+[![](https://images.microbadger.com/badges/image/czon/azdo-agent.svg)](https://microbadger.com/images/pmorisseau/azdo-agent)
+[![](https://images.microbadger.com/badges/version/czon/azdo-agent.svg)](https://microbadger.com/images/pmorisseau/azdo-agent)
 [![Build Status](https://dev.azure.com/czon/Docker%20Azure%20Pipelines%20Agent/_apis/build/status/codez-one.docker-azure-pipelines-agent?branchName=master)](https://dev.azure.com/czon/Docker%20Azure%20Pipelines%20Agent/_build/latest?definitionId=2&branchName=master)
 
 This is a Docker based project for automatically generating docker images for Azure DevOps Pipelines Agents with specified Versions. The resulting Docker images should be used as a base for project specific agents that are customized to the needs for the pipeline in your project.
@@ -20,7 +20,7 @@ To run the default Azure Pipelines agent image for a specific Azure DevOps accou
 docker run \
   -e AZDO_URL=<url> \
   -e AZDO_TOKEN=<pat> \
-  -it czon/azdo-agent
+  -it pmorisseau/azdo-agent
 ```
 
 A more secure option for passing the personal access token is supported by mounting a file that contains the token into the container and specifying the location of this file with the `AZDO_TOKEN_FILE` environment variable. For instance:
@@ -30,7 +30,7 @@ docker run \
   -v /path/to/my/token:/azdo-token \
   -e AZDO_URL=<url> \
   -e AZDO_TOKEN_FILE=/azdo-token \
-  -it czon/azdo-agent
+  -it pmorisseau/azdo-agent
 ```
 
 The same applies for the usage of the `AZDO_PASSWORD` environment variable. It is better to use `AZDO_PASSWORD_FILE`.
@@ -54,7 +54,7 @@ docker run \
   -e AZDO_POOL=mypool \
   -e AZDO_WORK='/var/azdo/$AZDO_AGENT' \
   -v /var/azdo:/var/azdo \
-  -it czon/azdo-agent:ubuntu-18.04
+  -it pmorisseau/azdo-agent:ubuntu-18.04
 ```
 
 ## Configuration
@@ -65,7 +65,7 @@ All the variables below will be ignored by the agent by default and will not be 
 
 `AZDO_URL`
 
-The complete url of the Azure DevOps account (e.g. `"https://dev.azure.com/czon/"` or `"https://tfs.company.com/tfs/"`).
+The complete url of the Azure DevOps account (e.g. `"https://dev.azure.com/pmorisseau/"` or `"https://tfs.company.com/tfs/"`).
 
 #### Authentification with Token (recommended)
 
@@ -145,7 +145,7 @@ To run a container and register it in Azure DevOps run `run.sh`.
 Example:
 
 ```bash
-./run.sh czon/azdo-agent:ubuntu-18.04-2.155.1 -s https://dev.azure.com/czon/ -n TestAgent01 -p DockerSamples -c -d -i
+./run.sh pmorisseau/azdo-agent:ubuntu-18.04-2.155.1 -s https://dev.azure.com/pmorisseau/ -n TestAgent01 -p DockerSamples -c -d -i
 ```
 
 ### Contribute

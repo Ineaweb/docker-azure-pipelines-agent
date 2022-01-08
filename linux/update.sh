@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-registry=czon
+registry=pmorisseau
 name=azdo-agent
 
 POSITIONAL=()

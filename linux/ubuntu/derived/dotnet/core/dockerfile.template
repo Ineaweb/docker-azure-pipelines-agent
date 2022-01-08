@@ -1,7 +1,7 @@
 FROM $[DOCKER_REGISTRY]/$[DOCKER_NAME]:$[AZDO_AGENT_TAG]
 
 LABEL name="$[DOCKER_REGISTRY]/$[DOCKER_NAME]:$[AZDO_AGENT_TAG]-dotnet-core-$[DOTNET_CORE_VERSION]" \
-      maintainer="CodeZ.one - Kirsten Kluge" \
+      maintainer="Pmorisseau - CodeZ.one - Kirsten Kluge" \
       version="0.1.0"
 
 WORKDIR /usr

@@ -1,8 +1,8 @@
 # escape=`
 FROM mcr.microsoft.com/windows/servercore:$[WINDOWS_VERSION]
 
-LABEL name="czon/azdo-agent:windows-core-$[WINDOWS_VERSION]" `
-      maintainer="CodeZ.one - Kirsten Kluge" `
+LABEL name="pmorisseau/azdo-agent:windows-core-$[WINDOWS_VERSION]" `
+      maintainer="Pmorisseau - CodeZ.one - Kirsten Kluge" `
       version="0.1.0"
 
 ENV HTTP_PROXY=$HTTP_PROXY `
