@@ -60,8 +60,8 @@ ubuntu() {
     AZDO_AGENT_TAG=ubuntu-$UBUNTU_VERSION
     if [ -n "$AZDO_AGENT_VERSION" ]; then
       TEMPLATE_DIR=versioned
-      TARGET_DIR=$TARGET_DIR/${AZDO_AGENT_VERSION/-/\/}
-      AZDO_AGENT_TAG=$AZDO_AGENT_TAG-$AZDO_AGENT_VERSION
+      TARGET_DIR=$TARGET_DIR/azdo
+      AZDO_AGENT_TAG=$AZDO_AGENT_TAG-azdo
     fi
 
     echo "        Target: $TARGET_DIR"

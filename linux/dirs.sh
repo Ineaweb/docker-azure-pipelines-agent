@@ -18,7 +18,7 @@ ubuntu() {
   while read -r UBUNTU_VERSION; do
     echo "ubuntu/$UBUNTU_VERSION"
     while read -r AZDO_AGENT_RELEASE; do
-      dirs "ubuntu/$UBUNTU_VERSION/${AZDO_AGENT_RELEASE/-/\/}"
+      dirs "ubuntu/$UBUNTU_VERSION/azdo"
     done < <(< versioned/releases sed '/^\s*#/d')
   done < <(< versions sed '/^\s*#/d')
 
