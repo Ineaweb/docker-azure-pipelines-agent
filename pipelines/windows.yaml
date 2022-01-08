@@ -19,7 +19,7 @@ jobs:
     displayName: 'Docker Login'
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     inputs:
-      containerRegistry: 'czon Docker Hub'
+      containerRegistry: 'pmorisseau Docker Hub'
       command: 'login'
       addPipelineData: false
 

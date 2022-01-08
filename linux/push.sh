@@ -4,7 +4,7 @@ set -e
 # Initialize all the option variables.
 # This ensures we are not contaminated by variables from the environment.
 
-registry=czon
+registry=pmorisseau
 name=azdo-agent
 
 POSITIONAL=()
