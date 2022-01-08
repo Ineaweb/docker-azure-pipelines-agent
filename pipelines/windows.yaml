@@ -12,6 +12,7 @@ jobs:
     workingDirectory: '$(Build.SourcesDirectory)/windows/'
   steps:
   - task: PowerShell@2
+    targetType: filepath
     filePath: .\build.ps1
     displayName: 'Build images'
     workingDirectory: $(workingDirectory)    
@@ -25,6 +26,7 @@ jobs:
       addPipelineData: false
   
   - task: PowerShell@2
+    targetType: filepath
     filePath: .\push.ps1
     displayName: 'Push images'
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
