@@ -11,7 +11,8 @@ RUN apt-get install --no-install-recommends \
       libunwind-dev \
       gettext \
       zlib1g \
-      libicu-dev \
+      libicu-dev
+      
 RUN set -x
 RUN export DOTNET_CLI_TELEMETRY_OPTOUT=1
 RUN curl -sSL -o dotnet-install.sh https://dot.net/v1/dotnet-install.sh
