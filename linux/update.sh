@@ -79,10 +79,12 @@ ubuntu() {
     fi
 
     if [ -n "$AZDO_AGENT_VERSION" ]; then
-      while read -r DOTNET_VERSION DOTNET_SDK_VERSION; do
+      while read -r DOTNET_LINE_VERSION; do
+        DOTNET_VERSION=$(echo $DOTNET_LINE_VERSION | cut -d' ' -f1)
+        DOTNET_SDK_VERSION=$(echo $DOTNET_LINE_VERSION | cut -d' ' -f2)
         DOTNET_CORE_DIR=$TARGET_DIR/dotnet/core/$DOTNET_VERSION
         mkdir -p "$DOTNET_CORE_DIR"
-
+        
         sed \
           -e s/'$\[DOCKER_REGISTRY\]'/"$registry"/g \
           -e s/'$\[DOCKER_NAME\]'/"$name"/g \

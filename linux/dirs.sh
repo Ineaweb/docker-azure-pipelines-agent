@@ -9,8 +9,9 @@ ubuntu() {
   dirs() {
     BASE_DIR=$1
     echo "$BASE_DIR"
-    while read -r DOTNET_CORE_VERSION; do
-      echo "$BASE_DIR/dotnet/core/$DOTNET_CORE_VERSION"
+    while read -r DOTNET_LINE_VERSION; do
+      DOTNET_VERSION=$(echo $DOTNET_LINE_VERSION | cut -d' ' -f1)
+      echo "$BASE_DIR/dotnet/core/$DOTNET_VERSION"
     done < <(< derived/dotnet/core/versions sed '/^\s*#/d')
   }
 
