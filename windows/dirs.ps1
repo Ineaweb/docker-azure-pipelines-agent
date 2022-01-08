@@ -9,9 +9,9 @@ function Core () {
             }
         }
 
-        foreach ($versionsLine in Get-Content ".\derived\dotnet\core\versions" | Where-Object { $_ -notmatch '^\s*#' }) {
+        foreach ($versionsLine in Get-Content ".\derived\dotnet\versions" | Where-Object { $_ -notmatch '^\s*#' }) {
             $versionsFields = $versionsLine.Split()
-            Write-Output "$baseDir\dotnet\core\$($versionsFields[0])"
+            Write-Output "$baseDir\dotnet\$($versionsFields[0])"
         }
     }
 
@@ -22,7 +22,7 @@ function Core () {
         Write-Output "Core\$($versionsFields[0])"
         foreach ($releasesLine in Get-Content .\versioned\releases | Where-Object { $_ -notmatch '^\s*#' }) {
             $releasesFields = $releasesLine.Split()
-            dirs "Core\$($versionsFields[0])\$($releasesFields[0] -replace '^(.*?)-(.*)','$1\$2')"
+            dirs "Core\$($versionsFields[0])\azdo"
         }    
     }
 
