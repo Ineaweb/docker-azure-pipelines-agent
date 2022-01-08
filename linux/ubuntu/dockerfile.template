@@ -16,8 +16,8 @@ ENV no_proxy=$NO_PROXY
 ENV DEBIAN_FRONTEND=noninteractive
 RUN echo "APT::Get::Assume-Yes \"true\";" > /etc/apt/apt.conf.d/90assumeyes
 
-RUN apt-get update 
-RUN apt-get install apt-utils
+RUN apt-get update  \
+ && apt-get install apt-utils
 RUN apt-get install --no-install-recommends \
     apt-transport-https \
     ca-certificates \
@@ -35,6 +35,6 @@ RUN apt-get install --no-install-recommends \
     time \
     unzip \
     wget \
-    zip
-RUN rm -rf /var/lib/apt/lists/*
-RUN apt-get clean
+    zip \
+ && rm -rf /var/lib/apt/lists/* \
+ && apt-get clean

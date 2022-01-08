@@ -6,16 +6,16 @@ LABEL name="$[DOCKER_REGISTRY]/$[DOCKER_NAME]:ubuntu-$[UBUNTU_VERSION]-$[AZDO_AG
 
 COPY ./runAgent.sh /azdo/
 
-RUN chmod +x /azdo/runAgent.sh
-RUN set -x
-RUN cd /azdo
-RUN curl -s -fSL https://vstsagentpackage.azureedge.net/agent/$[AZDO_AGENT_VERSION]/vsts-agent-linux-x64-$[AZDO_AGENT_VERSION].tar.gz -o agent.tgz
-RUN mkdir agent
-RUN cd agent
-RUN tar -xzf ../agent.tgz
-RUN chown -R root:root .
-RUN cd ..
-RUN rm agent.tgz
+RUN chmod +x /azdo/runAgent.sh \
+ && set -x \
+ && cd /azdo \
+ && curl -s -fSL https://vstsagentpackage.azureedge.net/agent/$[AZDO_AGENT_VERSION]/vsts-agent-linux-x64-$[AZDO_AGENT_VERSION].tar.gz -o agent.tgz \
+ && mkdir agent \
+ && cd agent \
+ && tar -xzf ../agent.tgz \
+ && chown -R root:root . \
+ && cd .. \
+ && rm agent.tgz
 
 RUN /azdo/agent/bin/installdependencies.sh
 

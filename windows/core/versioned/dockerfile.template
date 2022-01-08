@@ -16,8 +16,8 @@ SHELL ["cmd", "/S", "/C"]
 
 ENV chocolateyUseWindowsCompression=false
 
-RUN @powershell -ExecutionPolicy Bypass -Command "iex (Invoke-WebRequest 'https://chocolatey.org/install.ps1' -UseBasicParsing)"
-RUN SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
+RUN @powershell -ExecutionPolicy Bypass -Command "iex (Invoke-WebRequest 'https://chocolatey.org/install.ps1' -UseBasicParsing)" `
+ && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
 
 RUN choco config set cachelocation C:\chococache
 

@@ -10,15 +10,15 @@ ENV HTTP_PROXY=$HTTP_PROXY `
     NO_PROXY=$NO_PROXY `
     WINDOWS_IMAGE_VERSION=$[WINDOWS_VERSION]
 
-RUN mkdir C:\TFS
-RUN mkdir C:\Setup
+RUN mkdir C:\TFS `
+ && mkdir C:\Setup
 
 WORKDIR C:/Setup
 
 COPY setup/ .
 
 # SHELL ["powershell", "-ExecutionPolicy Bypass", "-Command"]
-RUN netsh.exe winhttp set proxy proxy-server="http=%HTTP_PROXY%;https=%HTTPS_PROXY%" bypass-list="%NO_PROXY%"
-RUN @powershell -ExecutionPolicy Bypass -File .\setprofile.ps1
+RUN netsh.exe winhttp set proxy proxy-server="http=%HTTP_PROXY%;https=%HTTPS_PROXY%" bypass-list="%NO_PROXY%" `
+ && @powershell -ExecutionPolicy Bypass -File .\setprofile.ps1
 
 WORKDIR C:\
