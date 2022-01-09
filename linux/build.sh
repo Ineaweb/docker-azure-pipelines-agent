@@ -112,6 +112,10 @@ fi
 
 devider
 
+docker image ls
+
+devider
+
 if [ "$cleanup" = true ]; then
   echo "Cleanup all unused images..."
   docker image prune -f
