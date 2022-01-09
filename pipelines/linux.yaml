@@ -11,12 +11,15 @@ jobs:
   variables:
     workingDirectory: '$(Build.SourcesDirectory)/linux/'
   steps:
-  - script: |
-      cd $(workingDirectory)
-      chmod 777 *.sh
-      ./build.sh
+  - task: Bash@3
     displayName: 'Build images'
-    workingDirectory: $(workingDirectory)
+    inputs:
+      targetType: 'inline'
+      script: |
+        cd $(workingDirectory)
+        chmod 777 *.sh
+        ./build.sh
+      workingDirectory: $(workingDirectory)
 
   - task: Docker@2
     displayName: 'Docker Login'
@@ -25,11 +28,14 @@ jobs:
       containerRegistry: 'pmorisseau Docker Hub'
       command: 'login'
       addPipelineData: false
-  
-  - script: |
-      cd $(workingDirectory)
-      ./push.sh
+      
+  - task: Bash@3     
     displayName: 'Push images'
+    inputs:
+      targetType: 'inline'
+      script: |
+        cd $(workingDirectory)
+        ./push.sh
+      workingDirectory: $(workingDirectory)
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    workingDirectory: $(workingDirectory)
     
