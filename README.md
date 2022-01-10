@@ -15,8 +15,6 @@ Based on Windows :
 
 This is a Docker based project for automatically generating docker images for Azure DevOps Pipelines Agents with specified Versions. The resulting Docker images should be used as a base for project specific agents that are customized to the needs for the pipeline in your project.
 
-> **Info**: The Windows images are not maintained at the moment.
-
 ## How to use these images
 
 Azure Pipelines agents must be started with account connection information, which is provided through environment variables listet below.
