@@ -75,12 +75,12 @@ Begin {
 Process {
     Write-Output "Configure Agent ..."
 
-    $addcommand = "& .\config.cmd --unattended --url `"$env:AZDO_URL`" --agent `"$env:AZDO_AGENT`" --work `"$env:AZDO_WORK`" --replace $argagentauth $argpool $argagentonce"
+    $addcommand = "& .\config.cmd --unattended --url `"$env:AZDO_URL`" --agent `"$env:AZDO_AGENT`" --work `"$env:AZDO_WORK`" --replace $argagentauth $argpool"
     Write-Output $addcommand
 
     try {
         Invoke-Expression $addcommand
-        Invoke-Expression "& .\run.cmd"
+        Invoke-Expression "& .\run.cmd $argagentonce"
     }
     finally {
         Cleanup;
