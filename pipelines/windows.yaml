@@ -5,7 +5,7 @@ jobs:
 - job: Windows
   displayName: 'Build windows images'
   pool:
-    vmImage: 'windows-latest'
+    vmImage: 'windows-2022'
   workspace:
     clean: all
   variables:
