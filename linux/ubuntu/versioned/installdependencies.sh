@@ -86,8 +86,9 @@ then
 
             if [ "$OSversion" = "VERSION_ID=22.04" ]
             then 
+                echo "Force Install libssl1.1"
                 wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.0g-2ubuntu4_amd64.deb
-                sudo dpkg -i libssl1.1_1.1.0g-2ubuntu4_amd64.deb
+                sudo dpkg --force-all -i libssl1.1_1.1.0g-2ubuntu4_amd64.deb
             fi;
 
             # libicu versions: libicu70 -> libicu67 -> libicu66 -> libicu63 -> libicu60 -> libicu57 -> libicu55 -> libicu52
@@ -120,6 +121,13 @@ then
                     print_errormessage
                     exit 1
                 fi
+
+                if [ "$OSversion" = "VERSION_ID=22.04" ]
+                then 
+                    echo "Force Install libssl1.1"
+                    wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.0g-2ubuntu4_amd64.deb
+                    sudo dpkg --force-all -i libssl1.1_1.1.0g-2ubuntu4_amd64.deb
+                fi;
 
                 # libicu versions: libicu70 -> libicu67 -> libicu66 -> libicu63 -> libicu60 -> libicu57 -> libicu55 -> libicu52
                 apt-get install -y libicu70 || apt-get install -y libicu67 || apt-get install -y libicu66 || apt-get install -y libicu63 || apt-get install -y libicu60 || apt-get install -y libicu57 || apt-get install -y libicu55 || apt-get install -y libicu52
