@@ -17,6 +17,10 @@ RUN chmod +x /azdo/runAgent.sh \
  && cd .. \
  && rm agent.tgz
 
+COPY ./installdependencies.sh /azdo/agent/bin/
+
+RUN chmod +x /azdo/agent/bin/installdependencies.sh
+
 RUN /azdo/agent/bin/installdependencies.sh
 
 CMD ["/azdo/runAgent.sh"]
