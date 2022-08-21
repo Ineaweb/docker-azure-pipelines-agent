@@ -11,7 +11,10 @@ ubuntu() {
     echo "$BASE_DIR"
     while read -r DOTNET_LINE_VERSION; do
       DOTNET_VERSION=$(echo $DOTNET_LINE_VERSION | cut -d' ' -f1)
-      echo "$BASE_DIR/dotnet/$DOTNET_VERSION"
+      # fix unable install core-3.1 on ubuntu 22.04
+      if ["$BASE_DIR" != "ubuntu/22.04/azdo" -o "$DOTNET_VERSION" = "core-3.1"]; then
+        echo "$BASE_DIR/dotnet/$DOTNET_VERSION"
+      fi
     done < <(< derived/dotnet/versions sed '/^\s*#/d')
   }
 
