@@ -89,6 +89,7 @@ then
                 echo "Force Install libssl1.1"
                 wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.0g-2ubuntu4_amd64.deb
                 sudo dpkg --force-all -i libssl1.1_1.1.0g-2ubuntu4_amd64.deb
+                sudo sed -i 's/openssl_conf = openssl_init/#openssl_conf = openssl_init/g' /etc/ssl/openssl.cnf
             fi;
 
             # libicu versions: libicu70 -> libicu67 -> libicu66 -> libicu63 -> libicu60 -> libicu57 -> libicu55 -> libicu52
@@ -127,6 +128,7 @@ then
                     echo "Force Install libssl1.1"
                     wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.0g-2ubuntu4_amd64.deb
                     sudo dpkg --force-all -i libssl1.1_1.1.0g-2ubuntu4_amd64.deb
+                    sudo sed -i 's/openssl_conf = openssl_init/#openssl_conf = openssl_init/g' /etc/ssl/openssl.cnf
                 fi;
 
                 # libicu versions: libicu70 -> libicu67 -> libicu66 -> libicu63 -> libicu60 -> libicu57 -> libicu55 -> libicu52
