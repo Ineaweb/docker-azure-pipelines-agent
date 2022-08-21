@@ -52,6 +52,8 @@ then
     cat /etc/os-release
     echo "------------------------------"
 
+    OSversion=`grep '^VERSION_ID' /etc/os-release`
+
     if [ -e /etc/debian_version ]
     then
         echo "The current OS is Debian based"
@@ -74,13 +76,19 @@ then
 	        # debian 10 uses libssl1.1
             # debian 9 uses libssl1.0.2
             # other debian linux use libssl1.0.0
-            apt install -y libssl1.1 || apt install -y libssl1.0.2 || apt install -y libssl1.0.0
+            apt install -y libssl3 || apt install -y libssl1.1 || apt install -y libssl1.0.2 || apt install -y libssl1.0.0
             if [ $? -ne 0 ]
             then
                 echo "'apt' failed with exit code '$?'"
                 print_errormessage
                 exit 1
             fi
+
+            if [ "$OSversion" = "VERSION_ID=22.04" ]
+            then 
+                wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.0g-2ubuntu4_amd64.deb
+                sudo dpkg -i libssl1.1_1.1.0g-2ubuntu4_amd64.deb
+            fi;
 
             # libicu versions: libicu70 -> libicu67 -> libicu66 -> libicu63 -> libicu60 -> libicu57 -> libicu55 -> libicu52
             apt install -y libicu70 || apt install -y libicu67 || apt install -y libicu66 || apt install -y libicu63 || apt install -y libicu60 || apt install -y libicu57 || apt install -y libicu55 || apt install -y libicu52
