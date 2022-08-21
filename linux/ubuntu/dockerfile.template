@@ -35,8 +35,9 @@ RUN apt-get install --no-install-recommends \
     time \
     unzip \
     wget \
-    zip \
- && rm -rf /var/lib/apt/lists/* \
- && apt-get clean
-
+    zip
+    
 RUN if [ "$[UBUNTU_VERSION]" = "22.04" ] ; then apt-get install --no-install-recommends liblttng-ust1 ; fi
+
+RUN rm -rf /var/lib/apt/lists/* \
+ && apt-get clean
