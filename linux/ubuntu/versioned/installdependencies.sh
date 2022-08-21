@@ -84,7 +84,7 @@ then
                 exit 1
             fi
 
-            if [ "$OSversion" = "VERSION_ID=22.04" ]
+            if [ $OSversion = 'VERSION_ID="22.04"' ]
             then 
                 echo "Force Install libssl1.1"
                 wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.0g-2ubuntu4_amd64.deb
@@ -122,7 +122,7 @@ then
                     exit 1
                 fi
 
-                if [ "$OSversion" = "VERSION_ID=22.04" ]
+                if [ $OSversion = 'VERSION_ID="22.04"' ]
                 then 
                     echo "Force Install libssl1.1"
                     wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.0g-2ubuntu4_amd64.deb
