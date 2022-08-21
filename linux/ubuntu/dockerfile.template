@@ -36,5 +36,6 @@ RUN apt-get install --no-install-recommends \
     unzip \
     wget \
     zip \
+    liblttng-ust0 \
  && rm -rf /var/lib/apt/lists/* \
  && apt-get clean
