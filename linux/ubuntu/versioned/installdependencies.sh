@@ -74,7 +74,7 @@ then
 	        # debian 10 uses libssl1.1
             # debian 9 uses libssl1.0.2
             # other debian linux use libssl1.0.0
-            apt install -y libssl3 || apt install -y libssl1.1 || apt install -y libssl1.0.2 || apt install -y libssl1.0.0
+            apt install -y libssl1.1 || apt install -y libssl1.0.2 || apt install -y libssl1.0.0
             if [ $? -ne 0 ]
             then
                 echo "'apt' failed with exit code '$?'"
