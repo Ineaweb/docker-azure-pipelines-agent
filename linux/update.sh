@@ -111,9 +111,9 @@ ubuntu() {
     while read -r AZDO_AGENT_VERSION; do
       update "$UBUNTU_VERSION" "$AZDO_AGENT_VERSION" "0"
     done < <(< versioned/releases sed '/^\s*#/d')
-    while read -r AZDO_AGENT_VERSION; do
-      update "$UBUNTU_VERSION" "$AZDO_AGENT_VERSION" "1"
-    done < <(< versioned_for_aci/releases sed '/^\s*#/d')
+    # while read -r AZDO_AGENT_VERSION; do
+    #   update "$UBUNTU_VERSION" "$AZDO_AGENT_VERSION" "1"
+    # done < <(< versioned_for_aci/releases sed '/^\s*#/d')
   done < <(< versions sed '/^\s*#/d')
 
   cd ..
