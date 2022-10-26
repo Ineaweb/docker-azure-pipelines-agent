@@ -52,17 +52,24 @@ ubuntu() {
   update() {
     UBUNTU_VERSION=$1
     AZDO_AGENT_VERSION=$2
+    AZDO_AGENT_ON_ACI=$3
 
     echo "    running update for: $UBUNTU_VERSION $AZDO_AGENT_VERSION"
 
     TEMPLATE_DIR=.
     TARGET_DIR=$BASE_PATH$UBUNTU_VERSION
     AZDO_AGENT_TAG=ubuntu-$UBUNTU_VERSION
-    if [ -n "$AZDO_AGENT_VERSION" ]; then
+    if [ -n "$AZDO_AGENT_VERSION" && "$AZDO_AGENT_ON_ACI" == "0" ]; then
       TEMPLATE_DIR=versioned
       TARGET_DIR=$TARGET_DIR/azdo
       AZDO_AGENT_TAG=$AZDO_AGENT_TAG-azdo
     fi
+
+    if [ -n "$AZDO_AGENT_VERSION" && "$AZDO_AGENT_ON_ACI" == "1" ]; then
+      TEMPLATE_DIR=versioned_for_aci
+      TARGET_DIR=$TARGET_DIR/aci-azdo
+      AZDO_AGENT_TAG=$AZDO_AGENT_TAG-aci-azdo
+    fi    
 
     echo "        Target: $TARGET_DIR"
     mkdir -p "$TARGET_DIR"
@@ -102,8 +109,11 @@ ubuntu() {
     rm -rf "$BASE_PATH$UBUNTU_VERSION"
     update "$UBUNTU_VERSION"
     while read -r AZDO_AGENT_VERSION; do
-      update "$UBUNTU_VERSION" "$AZDO_AGENT_VERSION"
+      update "$UBUNTU_VERSION" "$AZDO_AGENT_VERSION" "0"
     done < <(< versioned/releases sed '/^\s*#/d')
+    while read -r AZDO_AGENT_VERSION; do
+      update "$UBUNTU_VERSION" "$AZDO_AGENT_VERSION" "1"
+    done < <(< versioned_for_aci/releases sed '/^\s*#/d')
   done < <(< versions sed '/^\s*#/d')
 
   cd ..
