@@ -59,13 +59,13 @@ ubuntu() {
     TEMPLATE_DIR=.
     TARGET_DIR=$BASE_PATH$UBUNTU_VERSION
     AZDO_AGENT_TAG=ubuntu-$UBUNTU_VERSION
-    if [ -n "$AZDO_AGENT_VERSION" && "$AZDO_AGENT_ON_ACI" == "0" ]; then
+    if [ -n "$AZDO_AGENT_VERSION" && "$AZDO_AGENT_ON_ACI" = "0" ]; then
       TEMPLATE_DIR=versioned
       TARGET_DIR=$TARGET_DIR/azdo
       AZDO_AGENT_TAG=$AZDO_AGENT_TAG-azdo
     fi
 
-    if [ -n "$AZDO_AGENT_VERSION" && "$AZDO_AGENT_ON_ACI" == "1" ]; then
+    if [ -n "$AZDO_AGENT_VERSION" && "$AZDO_AGENT_ON_ACI" = "1" ]; then
       TEMPLATE_DIR=versioned_for_aci
       TARGET_DIR=$TARGET_DIR/aci-azdo
       AZDO_AGENT_TAG=$AZDO_AGENT_TAG-aci-azdo
