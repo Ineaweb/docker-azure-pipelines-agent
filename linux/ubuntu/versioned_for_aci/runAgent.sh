@@ -115,15 +115,15 @@ print_message() {
 kill() {
   # Kill ourselves if running in ACI. 
   if [ -n "$AZ_ACI_NAME" ]; then
-    print_header "8. Destroying container $AZ_ACI_NAME on $AZ_ACI_RG resource group"
-    print_header "8.1 Logging in with $AZ_SERVICE_PRINCIPAL on $AZ_CLOUD"
+    print_message "8. Destroying container $AZ_ACI_NAME on $AZ_ACI_RG resource group"
+    print_message "8.1 Logging in with $AZ_SERVICE_PRINCIPAL on $AZ_CLOUD"
     az login --service-principal \
       -u $AZ_SERVICE_PRINCIPAL \
       -p $AZ_SERVICE_PRINCIPAL_KEY \
       --tenant $AZ_TENANT_ID > /dev/null
-    print_header "8.2 Setting Subscription $AZ_SUBSCRIPTION_ID"
+    print_message "8.2 Setting Subscription $AZ_SUBSCRIPTION_ID"
     az account set --subscription $AZ_SUBSCRIPTION_ID > /dev/null
-    print_header "8.3 Deleting "
+    print_message "8.3 Deleting "
     az container delete --yes \
       --resource-group $AZ_ACI_RG \
       --name $AZ_ACI_NAME
@@ -168,4 +168,6 @@ print_message "Starting Agent ..."
 # echo "Exclude: ${env_exclude[@]/#/--unset=}"
 # echo "Include: ${env_include[@]}"
 
-env ${env_exclude[@]/#/--unset=} "${env_include[@]}" ./run.sh $arg_agent_once & wait $! & kill
+env ${env_exclude[@]/#/--unset=} "${env_include[@]}" ./run.sh $arg_agent_once & wait $!
+
+kill
