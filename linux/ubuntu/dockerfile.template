@@ -37,7 +37,6 @@ RUN apt-get install --no-install-recommends \
     wget \
     zip \
     software-properties-common \
-    powershell \
  && rm -rf /var/lib/apt/lists/* \
  && apt-get clean
 
