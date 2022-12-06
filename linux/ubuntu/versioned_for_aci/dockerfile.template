@@ -61,6 +61,8 @@ RUN apt-get install --no-install-recommends \
       && dotnet help >/dev/null \
       && apt-get clean
 
+ENV dotnet=/usr/bin/dotnet
+
 RUN dotnet tool install -g microsoft.sqlpackage
 
 CMD ["/azdo/runAgent.sh"]
