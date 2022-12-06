@@ -22,3 +22,5 @@ RUN apt-get install --no-install-recommends \
       && apt-get clean
 
 ENV dotnet=/usr/bin/dotnet
+
+RUN dotnet tool install -g microsoft.sqlpackage
