@@ -24,7 +24,7 @@ ubuntu() {
       dirs "ubuntu/$UBUNTU_VERSION/azdo"
     done < <(< versioned/releases sed '/^\s*#/d')
     while read -r AZDO_AGENT_RELEASE; do
-      dirs "ubuntu/$UBUNTU_VERSION/aci-azdo"
+      echo "ubuntu/$UBUNTU_VERSION/aci-azdo"
     done < <(< versioned_for_aci/releases sed '/^\s*#/d')
   done < <(< versions sed '/^\s*#/d')
 
