@@ -1,1 +1,1 @@
-ubuntu-18.04-null
+ubuntu-22.04-null
